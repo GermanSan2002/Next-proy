@@ -9,8 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.16",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "mdb-react-ui-kit": "^8.0.0",
     "next": "14.2.3",
     "react": "^18",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18",
     "serverless-mysql": "^1.5.5",
     "validator": "^13.11.0"

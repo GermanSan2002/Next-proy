@@ -5,7 +5,7 @@ export const conn = mysql({
         host: 'localhost',
         user: 'root',
         password: '123456789',
-        port: 3306,
+        port: 3307,
         database: 'nextdb'
     }
 })
