@@ -5,7 +5,7 @@ export async function GET(request, { params }){
     try{
         const res = await conn.query("SELECT * FROM product WHERE id = ?", [params.id,])
 
-        if (result.length === 0) {
+        if (res.length === 0) {
             return NextResponse.json(
                 {
                     message: "Producto no encontrado",
@@ -16,7 +16,7 @@ export async function GET(request, { params }){
             );
         }
 
-        return NextResponse.json(result[0]);
+        return NextResponse.json(res[0]);
     }catch(error){
         return NextResponse.json(
             {
