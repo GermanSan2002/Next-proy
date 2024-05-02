@@ -59,46 +59,26 @@ export async function DELETE(request, { params }) {
 
 export async function PUT(request, { params }) {
     try {
-        const data = await request.formData();
-        const updateData = {
-            name: data.get("name"),
-            price: data.get("price"),
-            description: data.get("description"),
-        };
-
-        if (!data.get("name")) {
-            return NextResponse.json(
-                {
-                    message: "Name is required",
-                },
-                {
-                    status: 400,
-                }
-            );
-        }
-
-        const result = await conn.query("UPDATE product SET ? WHERE id = ?", [
-            updateData,
+        const data = await request.json();
+        const res = await conn.query("UPDATE product SET ? WHERE id=?", [
+            data,
             params.id,
-        ]);
-
-        if (result.affectedRows === 0) {
+        ])
+        
+        if(res.affectedRows === 0){
             return NextResponse.json(
-                {
-                    message: "Producto no encontrado",
-                },
-                {
-                    status: 404,
-                }
-            );
+            {
+                message: "Prioducto no encontrado"
+            },
+            {
+                status: 404
+            })
         }
 
-        const updatedProduct = await conn.query(
-            "SELECT * FROM product WHERE id = ?",
-            [params.id]
-        );
+        const updated = await conn.query("SELECT * FROM product WHERE id = ?", [params.id,])
 
-        return NextResponse.json(updatedProduct[0]);
+        return NextResponse.json(updated[0])
+
     } catch (error) {
         console.log(error);
         return NextResponse.json(

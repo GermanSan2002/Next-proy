@@ -1,9 +1,3 @@
-import React from 'react'
+import NewPage from "../../new/page"
 
-function editProductPage() {
-  return (
-    <div>editProductPage</div>
-  )
-}
-
-export default editProductPage
+export default NewPage
